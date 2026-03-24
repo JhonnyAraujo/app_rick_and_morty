@@ -20,8 +20,6 @@
 
 ## ✨ Funcionalidades
 
-## ✨ Funcionalidades
-
 - **Visualização Flexível:** A página inicial permite alternar dinamicamente entre o layout em Lista (padrão) e em Grade (Grid).
 - **Busca e Filtro Local:** Campo de pesquisa na tela inicial que filtra instantaneamente os personagens já carregados, permitindo buscas tanto pelo Nome quanto pelo ID.
 - **Detalhes do Personagem:** Navegação para uma tela dedicada com informações completas ao tocar em qualquer personagem da lista.
@@ -36,22 +34,4 @@ Este projeto foi desenvolvido com as seguintes tecnologias e práticas:
 - **Framework:** [Flutter](https://flutter.dev/)
 - **Gerenciamento de Estado:** [Mobx](https://pub.dev/packages/mobx)
 - **Consumo de API:** [Dio](https://pub.dev/packages/dio)
-- **Arquitetura:** (ex: Clean Architecture, MVC, MVVM)
-
-## 🚀 Como Executar o Projeto
-
-### Pré-requisitos
-
-Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-
-- [Git](https://git-scm.com)
-- [Flutter SDK](https://docs.flutter.dev/get-started/install)
-- Um emulador (Android/iOS) ou um dispositivo físico configurado.
-
-### Passos para rodar:
-
-1. Clone este repositório:
-
-```bash
-git clone [https://github.com/seu-usuario/nome-do-projeto.git](https://github.com/seu-usuario/nome-do-projeto.git)
-```
+- **Arquitetura:** MVVM
