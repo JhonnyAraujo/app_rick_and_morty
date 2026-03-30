@@ -1,4 +1,5 @@
 import 'package:app_rick_and_morty/colors.dart';
+import 'package:app_rick_and_morty/widgets/card_personagem.widget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -59,12 +60,13 @@ class HomePage extends StatelessWidget {
               ),
               Expanded(
                 child: GridView.builder(
+                  itemCount: 5,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     childAspectRatio: 2 / 2.8,
                   ),
                   itemBuilder: (context, index) {
-                    return;
+                    return const CardPersonagem();
                   },
                 ),
               ),
