@@ -32,11 +32,15 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.8
   dio: 5.9.2
+  mobx: 2.6.0
+  flutter_mobx: 2.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  mobx_codegen: 2.7.7
+  build_runner: 2.13.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,9 +1,34 @@
 import 'package:app_rick_and_morty/colors.dart';
+import 'package:app_rick_and_morty/pages/home/store/home.store.dart';
 import 'package:app_rick_and_morty/widgets/card_personagem.widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final HomeStore store = HomeStore();
+
+  final ScrollController scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    store.loadPersonagens();
+    scrollController.addListener(scrollListener);
+  }
+
+  void scrollListener() {
+    if (scrollController.offset >= scrollController.position.maxScrollExtent &&
+        !scrollController.position.outOfRange) {
+      store.loadPersonagens();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,17 +83,25 @@ class HomePage extends StatelessWidget {
                   ),
                 ],
               ),
-              Expanded(
-                child: GridView.builder(
-                  itemCount: 5,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 2 / 2.8,
-                  ),
-                  itemBuilder: (context, index) {
-                    return const CardPersonagem();
-                  },
-                ),
+              Observer(
+                builder: (context) {
+                  return store.isLoading
+                      ? const Align(child: CircularProgressIndicator())
+                      : Expanded(
+                          child: GridView.builder(
+                            controller: scrollController,
+                            itemCount: store.personagens.length,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  childAspectRatio: 2 / 2.8,
+                                ),
+                            itemBuilder: (context, index) {
+                              return const CardPersonagem();
+                            },
+                          ),
+                        );
+                },
               ),
             ],
           ),

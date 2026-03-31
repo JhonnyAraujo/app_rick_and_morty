@@ -3,7 +3,7 @@ class PersonagemResponse {
 
   PersonagemResponse({required this.lista});
 
-  factory PersonagemResponse.fromMap(Map<String, dynamic> map) {
-    return PersonagemResponse(lista: map[""] as List);
+  factory PersonagemResponse.fromMap(List list) {
+    return PersonagemResponse(lista: list);
   }
 }
