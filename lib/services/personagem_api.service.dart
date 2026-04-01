@@ -6,13 +6,11 @@ class PersonagemApi {
   late final Dio _dio;
 
   PersonagemApi() {
-    _dio = Dio(
-      BaseOptions(baseUrl: "https://rickandmortyapi.com/api/character"),
-    );
+    _dio = Dio(BaseOptions(baseUrl: "https://rickandmortyapi.com/api"));
   }
 
-  Future loadPersonagens({required List<int> offset}) async {
-    final response = await _dio.get("/${offset.join(",")}");
+  Future loadPersonagens({required int page}) async {
+    final response = await _dio.get("/character?page=$page");
 
     if (response.statusCode != HttpStatus.ok) {
       throw Exception("Erro ao buscar os pokemons na API");

@@ -10,28 +10,7 @@ class HomeStore = HomeStoreBase with _$HomeStore;
 // The store-class
 abstract class HomeStoreBase with Store {
   final _service = PersonagemApi();
-  List<int> offset = [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-  ];
+  int page = 1;
 
   @observable
   bool isLoading = false;
@@ -43,10 +22,10 @@ abstract class HomeStoreBase with Store {
   Future<void> loadPersonagens() async {
     isLoading = true;
 
-    final personagensResponse = await _service.loadPersonagens(offset: offset);
+    final personagensResponse = await _service.loadPersonagens(page: page);
 
-    offset += offset;
-    personagens.addAll(personagensResponse.lista);
+    page++;
+    personagens.addAll(personagensResponse.results);
 
     isLoading = false;
   }
