@@ -77,30 +77,52 @@ class _HomePageState extends State<HomePage> {
               Row(
                 children: [
                   const Spacer(),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.list, color: primaryColor),
+                  Observer(
+                    builder: (context) {
+                      return IconButton(
+                        onPressed: () {
+                          store.toggleView();
+                        },
+                        icon: store.isGrid
+                            ? const Icon(Icons.grid_view, color: primaryColor)
+                            : const Icon(Icons.list, color: primaryColor),
+                      );
+                    },
                   ),
                 ],
               ),
               Observer(
                 builder: (context) {
-                  return store.isLoading
-                      ? const Align(child: CircularProgressIndicator())
-                      : Expanded(
-                          child: GridView.builder(
-                            controller: scrollController,
-                            itemCount: store.personagens.length,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  childAspectRatio: 2 / 2.8,
-                                ),
-                            itemBuilder: (context, index) {
-                              return const CardPersonagem();
-                            },
-                          ),
-                        );
+                  if (store.isGrid) {
+                    return store.isLoading
+                        ? const CircularProgressIndicator()
+                        : Expanded(
+                            child: GridView.builder(
+                              controller: scrollController,
+                              itemCount: store.personagens.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    childAspectRatio: 2 / 2.8,
+                                  ),
+                              itemBuilder: (context, index) {
+                                return const CardPersonagem();
+                              },
+                            ),
+                          );
+                  } else {
+                    return store.isLoading
+                        ? const CircularProgressIndicator()
+                        : Expanded(
+                            child: ListView.builder(
+                              controller: scrollController,
+                              itemCount: store.personagens.length,
+                              itemBuilder: (context, index) {
+                                return const CardPersonagem();
+                              },
+                            ),
+                          );
+                  }
                 },
               ),
             ],

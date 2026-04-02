@@ -9,24 +9,32 @@ class HomeStore = HomeStoreBase with _$HomeStore;
 
 // The store-class
 abstract class HomeStoreBase with Store {
-  final _service = PersonagemApi();
-  int page = 1;
+  final PersonagemApi _service = PersonagemApi();
+  int _page = 1;
 
   @observable
-  bool isLoading = false;
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
+
+  final _personagens = ObservableList();
+  ObservableList get personagens => _personagens;
 
   @observable
-  ObservableList personagens = [].asObservable();
+  bool _isGrid = true;
+  bool get isGrid => _isGrid;
+
+  @action
+  void toggleView() => _isGrid = !_isGrid;
 
   @action
   Future<void> loadPersonagens() async {
-    isLoading = true;
+    _isLoading = true;
 
-    final personagensResponse = await _service.loadPersonagens(page: page);
+    final personagensResponse = await _service.loadPersonagens(page: _page);
 
-    page++;
-    personagens.addAll(personagensResponse.results);
+    _page++;
+    _personagens.addAll(personagensResponse.results);
 
-    isLoading = false;
+    _isLoading = false;
   }
 }

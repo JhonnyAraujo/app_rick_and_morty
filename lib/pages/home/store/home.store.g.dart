@@ -9,39 +9,39 @@ part of 'home.store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$HomeStore on HomeStoreBase, Store {
-  late final _$isLoadingAtom = Atom(
-    name: 'HomeStoreBase.isLoading',
+  late final _$_isLoadingAtom = Atom(
+    name: 'HomeStoreBase._isLoading',
     context: context,
   );
 
   @override
-  bool get isLoading {
-    _$isLoadingAtom.reportRead();
-    return super.isLoading;
+  bool get _isLoading {
+    _$_isLoadingAtom.reportRead();
+    return super._isLoading;
   }
 
   @override
-  set isLoading(bool value) {
-    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
-      super.isLoading = value;
+  set _isLoading(bool value) {
+    _$_isLoadingAtom.reportWrite(value, super._isLoading, () {
+      super._isLoading = value;
     });
   }
 
-  late final _$personagensAtom = Atom(
-    name: 'HomeStoreBase.personagens',
+  late final _$_isGridAtom = Atom(
+    name: 'HomeStoreBase._isGrid',
     context: context,
   );
 
   @override
-  ObservableList<dynamic> get personagens {
-    _$personagensAtom.reportRead();
-    return super.personagens;
+  bool get _isGrid {
+    _$_isGridAtom.reportRead();
+    return super._isGrid;
   }
 
   @override
-  set personagens(ObservableList<dynamic> value) {
-    _$personagensAtom.reportWrite(value, super.personagens, () {
-      super.personagens = value;
+  set _isGrid(bool value) {
+    _$_isGridAtom.reportWrite(value, super._isGrid, () {
+      super._isGrid = value;
     });
   }
 
@@ -55,11 +55,27 @@ mixin _$HomeStore on HomeStoreBase, Store {
     return _$loadPersonagensAsyncAction.run(() => super.loadPersonagens());
   }
 
+  late final _$HomeStoreBaseActionController = ActionController(
+    name: 'HomeStoreBase',
+    context: context,
+  );
+
+  @override
+  void toggleView() {
+    final _$actionInfo = _$HomeStoreBaseActionController.startAction(
+      name: 'HomeStoreBase.toggleView',
+    );
+    try {
+      return super.toggleView();
+    } finally {
+      _$HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-isLoading: ${isLoading},
-personagens: ${personagens}
+
     ''';
   }
 }
