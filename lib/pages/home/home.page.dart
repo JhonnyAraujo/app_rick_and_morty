@@ -1,6 +1,7 @@
 import 'package:app_rick_and_morty/colors.dart';
 import 'package:app_rick_and_morty/pages/home/store/home.store.dart';
-import 'package:app_rick_and_morty/widgets/card_personagem.widget.dart';
+import 'package:app_rick_and_morty/widgets/card_grid_personagem.widget.dart';
+import 'package:app_rick_and_morty/widgets/card_list_personagem.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -84,8 +85,8 @@ class _HomePageState extends State<HomePage> {
                           store.toggleView();
                         },
                         icon: store.isGrid
-                            ? const Icon(Icons.grid_view, color: primaryColor)
-                            : const Icon(Icons.list, color: primaryColor),
+                            ? const Icon(Icons.list, color: primaryColor)
+                            : const Icon(Icons.grid_view, color: primaryColor),
                       );
                     },
                   ),
@@ -106,7 +107,12 @@ class _HomePageState extends State<HomePage> {
                                     childAspectRatio: 2 / 2.8,
                                   ),
                               itemBuilder: (context, index) {
-                                return const CardPersonagem();
+                                return const CardGridPersonagem(
+                                  id: 1,
+                                  name: "Rick Sanchez",
+                                  imageUrl:
+                                      "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+                                );
                               },
                             ),
                           );
@@ -118,7 +124,15 @@ class _HomePageState extends State<HomePage> {
                               controller: scrollController,
                               itemCount: store.personagens.length,
                               itemBuilder: (context, index) {
-                                return const CardPersonagem();
+                                return const CardListPersonagem(
+                                  id: 1,
+                                  name: "Rick Sanchez",
+                                  imageUrl:
+                                      "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+                                  status: "Alive",
+                                  species: "Human",
+                                  gender: "Male",
+                                );
                               },
                             ),
                           );

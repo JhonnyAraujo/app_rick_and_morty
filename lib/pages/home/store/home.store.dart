@@ -20,7 +20,7 @@ abstract class HomeStoreBase with Store {
   ObservableList get personagens => _personagens;
 
   @observable
-  bool _isGrid = true;
+  bool _isGrid = false;
   bool get isGrid => _isGrid;
 
   @action

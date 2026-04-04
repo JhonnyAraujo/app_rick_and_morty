@@ -20,7 +20,7 @@
 
 ## ✨ Funcionalidades
 
-- **Visualização Flexível:** A página inicial permite alternar dinamicamente entre o layout em Lista (padrão) e em Grade (Grid).
+- **Visualização Flexível:** A página inicial permite alternar dinamicamente entre o layout em Lista e em Grade.
 - **Busca e Filtro Local:** Campo de pesquisa na tela inicial que filtra instantaneamente os personagens já carregados, permitindo buscas tanto pelo Nome quanto pelo ID.
 - **Detalhes do Personagem:** Navegação para uma tela dedicada com informações completas ao tocar em qualquer personagem da lista.
 - **Paginação Inteligente (Infinite Scroll):** Consumo da API sob demanda. O app carrega os dados de 20 em 20, buscando novos personagens automaticamente apenas quando o usuário chega ao final da rolagem.
