@@ -95,38 +95,46 @@ class _HomePageState extends State<HomePage> {
               Observer(
                 builder: (context) {
                   if (store.isGrid) {
-                    return store.isLoading
-                        ? const CircularProgressIndicator()
-                        : Expanded(
-                            child: GridView.builder(
-                              controller: scrollController,
-                              itemCount: store.personagens.length,
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    childAspectRatio: 2 / 2.8,
-                                  ),
-                              itemBuilder: (context, index) {
-                                return CardGridPersonagem(
-                                  personagem: store.personagens[index],
-                                );
-                              },
+                    return Expanded(
+                      child: GridView.builder(
+                        controller: scrollController,
+                        itemCount: store.personagens.length + 1,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              childAspectRatio: 2 / 2.8,
                             ),
+                        itemBuilder: (context, index) {
+                          if (index == store.personagens.length) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+
+                          return CardGridPersonagem(
+                            personagem: store.personagens[index],
                           );
+                        },
+                      ),
+                    );
                   } else {
-                    return store.isLoading
-                        ? const CircularProgressIndicator()
-                        : Expanded(
-                            child: ListView.builder(
-                              controller: scrollController,
-                              itemCount: store.personagens.length,
-                              itemBuilder: (context, index) {
-                                return CardListPersonagem(
-                                  personagem: store.personagens[index],
-                                );
-                              },
-                            ),
+                    return Expanded(
+                      child: ListView.builder(
+                        controller: scrollController,
+                        itemCount: store.personagens.length + 1,
+                        itemBuilder: (context, index) {
+                          if (index == store.personagens.length) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+
+                          return CardListPersonagem(
+                            personagem: store.personagens[index],
                           );
+                        },
+                      ),
+                    );
                   }
                 },
               ),
