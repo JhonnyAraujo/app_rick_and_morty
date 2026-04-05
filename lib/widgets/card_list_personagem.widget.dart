@@ -1,22 +1,10 @@
+import 'package:app_rick_and_morty/models/personagem.model.dart';
 import 'package:flutter/material.dart';
 
 class CardListPersonagem extends StatelessWidget {
-  final int id;
-  final String name;
-  final String imageUrl;
-  final String status;
-  final String species;
-  final String gender;
+  final Personagem personagem;
 
-  const CardListPersonagem({
-    super.key,
-    required this.id,
-    required this.name,
-    required this.imageUrl,
-    required this.status,
-    required this.species,
-    required this.gender,
-  });
+  const CardListPersonagem({super.key, required this.personagem});
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +16,14 @@ class CardListPersonagem extends StatelessWidget {
           spacing: 15,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(imageUrl, width: 120),
+            Image.network(personagem.imageUrl, width: 120),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 5,
                 children: [
                   Text(
-                    name,
+                    personagem.name,
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -43,14 +31,17 @@ class CardListPersonagem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "$status - $species",
+                    "${personagem.status} - ${personagem.species}",
                     style: const TextStyle(color: Colors.black45),
                   ),
-                  Text(gender, style: const TextStyle(color: Colors.black45)),
+                  Text(
+                    personagem.gender,
+                    style: const TextStyle(color: Colors.black45),
+                  ),
                   Align(
                     alignment: AlignmentGeometry.bottomRight,
                     child: Text(
-                      "$id",
+                      "${personagem.id}",
                       style: const TextStyle(color: Colors.black45),
                     ),
                   ),

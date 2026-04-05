@@ -107,11 +107,8 @@ class _HomePageState extends State<HomePage> {
                                     childAspectRatio: 2 / 2.8,
                                   ),
                               itemBuilder: (context, index) {
-                                return const CardGridPersonagem(
-                                  id: 1,
-                                  name: "Rick Sanchez",
-                                  imageUrl:
-                                      "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+                                return CardGridPersonagem(
+                                  personagem: store.personagens[index],
                                 );
                               },
                             ),
@@ -124,14 +121,8 @@ class _HomePageState extends State<HomePage> {
                               controller: scrollController,
                               itemCount: store.personagens.length,
                               itemBuilder: (context, index) {
-                                return const CardListPersonagem(
-                                  id: 1,
-                                  name: "Rick Sanchez",
-                                  imageUrl:
-                                      "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-                                  status: "Alive",
-                                  species: "Human",
-                                  gender: "Male",
+                                return CardListPersonagem(
+                                  personagem: store.personagens[index],
                                 );
                               },
                             ),

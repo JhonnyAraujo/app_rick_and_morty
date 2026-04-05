@@ -1,33 +1,30 @@
+import 'package:app_rick_and_morty/models/personagem.model.dart';
 import 'package:flutter/material.dart';
 
 class CardGridPersonagem extends StatelessWidget {
-  final int id;
-  final String name;
-  final String imageUrl;
+  final Personagem personagem;
 
-  const CardGridPersonagem({
-    super.key,
-    required this.id,
-    required this.name,
-    required this.imageUrl,
-  });
+  const CardGridPersonagem({super.key, required this.personagem});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          spacing: 12,
+          spacing: 6,
           children: [
-            Text("$id", style: const TextStyle(color: Colors.black45)),
-            Image.network(imageUrl),
             Text(
-              name,
+              "${personagem.id}",
+              style: const TextStyle(color: Colors.black45),
+            ),
+            Image.network(personagem.imageUrl, width: 135),
+            Text(
+              personagem.name,
               style: const TextStyle(
                 color: Colors.black45,
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),

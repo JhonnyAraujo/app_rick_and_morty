@@ -9,7 +9,7 @@ class HomeStore = HomeStoreBase with _$HomeStore;
 
 // The store-class
 abstract class HomeStoreBase with Store {
-  final PersonagemApi _service = PersonagemApi();
+  final PersonagensApi _service = PersonagensApi();
   int _page = 1;
 
   @observable

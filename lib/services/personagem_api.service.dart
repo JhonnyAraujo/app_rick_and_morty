@@ -2,10 +2,10 @@ import 'package:app_rick_and_morty/models/personagem_response.model.dart';
 import 'package:dio/dio.dart';
 import 'dart:io';
 
-class PersonagemApi {
+class PersonagensApi {
   late final Dio _dio;
 
-  PersonagemApi() {
+  PersonagensApi() {
     _dio = Dio(BaseOptions(baseUrl: "https://rickandmortyapi.com/api"));
   }
 
