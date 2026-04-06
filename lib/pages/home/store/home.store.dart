@@ -1,3 +1,4 @@
+import 'package:app_rick_and_morty/models/personagem.model.dart';
 import 'package:app_rick_and_morty/services/personagem_api.service.dart';
 import 'package:mobx/mobx.dart';
 
@@ -16,8 +17,27 @@ abstract class HomeStoreBase with Store {
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
-  final _personagens = ObservableList();
+  final ObservableList<Personagem> _personagens = <Personagem>[].asObservable();
   ObservableList get personagens => _personagens;
+
+  @observable
+  String? search;
+
+  @computed
+  List<Personagem> get filteredPersonagens {
+    if (search == null) return _personagens.toList();
+
+    return _personagens
+        .where(
+          (personagem) =>
+              personagem.name.toLowerCase().contains(search!.toLowerCase()) ||
+              personagem.id.toString() == search,
+        )
+        .toList();
+  }
+
+  @action
+  void setSearch(String? text) => search = text;
 
   @observable
   bool _isGrid = false;
