@@ -1,5 +1,6 @@
 import 'package:app_rick_and_morty/models/personagem.model.dart';
 import 'package:app_rick_and_morty/services/personagem_api.service.dart';
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
 // Include generated file
@@ -56,5 +57,15 @@ abstract class HomeStoreBase with Store {
     _personagens.addAll(personagensResponse.results);
 
     _isLoading = false;
+  }
+
+  @action
+  void updatePokemonColor({required int personagemId, required Color color}) {
+    final indexPersonagem = _personagens.indexWhere(
+      (personagem) => personagem.id == personagemId,
+    );
+    _personagens[indexPersonagem] = _personagens[indexPersonagem].copyWith(
+      color: color,
+    );
   }
 }
