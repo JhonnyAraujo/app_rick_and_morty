@@ -73,6 +73,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   prefixIcon: const Icon(Icons.search, color: Colors.black45),
                 ),
+                onChanged: store.setSearch,
               ),
               const SizedBox(height: 12),
               Row(
@@ -94,26 +95,26 @@ class _HomePageState extends State<HomePage> {
               ),
               Observer(
                 builder: (context) {
+                  final listaFiltrada = store.filteredPersonagens;
                   if (store.isGrid) {
                     return Expanded(
                       child: GridView.builder(
                         controller: scrollController,
-                        itemCount: store.personagens.length + 1,
+                        itemCount:
+                            listaFiltrada.length + (store.isLoading ? 1 : 0),
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
                               childAspectRatio: 2 / 2.8,
                             ),
                         itemBuilder: (context, index) {
-                          if (index == store.personagens.length) {
+                          if (index == listaFiltrada.length) {
                             return const Center(
                               child: CircularProgressIndicator(),
                             );
                           }
-
-                          return CardGridPersonagem(
-                            personagem: store.personagens[index],
-                          );
+                          final personagem = listaFiltrada[index];
+                          return CardGridPersonagem(personagem: personagem);
                         },
                       ),
                     );
@@ -121,17 +122,16 @@ class _HomePageState extends State<HomePage> {
                     return Expanded(
                       child: ListView.builder(
                         controller: scrollController,
-                        itemCount: store.personagens.length + 1,
+                        itemCount:
+                            listaFiltrada.length + (store.isLoading ? 1 : 0),
                         itemBuilder: (context, index) {
-                          if (index == store.personagens.length) {
+                          if (index == listaFiltrada.length) {
                             return const Center(
                               child: CircularProgressIndicator(),
                             );
                           }
-
-                          return CardListPersonagem(
-                            personagem: store.personagens[index],
-                          );
+                          final personagem = listaFiltrada[index];
+                          return CardListPersonagem(personagem: personagem);
                         },
                       ),
                     );
