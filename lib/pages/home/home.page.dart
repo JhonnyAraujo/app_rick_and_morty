@@ -114,7 +114,10 @@ class _HomePageState extends State<HomePage> {
                             );
                           }
                           final personagem = listaFiltrada[index];
-                          return CardGridPersonagem(personagem: personagem);
+                          return CardGridPersonagem(
+                            personagem: personagem,
+                            store: store,
+                          );
                         },
                       ),
                     );
@@ -131,7 +134,10 @@ class _HomePageState extends State<HomePage> {
                             );
                           }
                           final personagem = listaFiltrada[index];
-                          return CardListPersonagem(personagem: personagem);
+                          return CardListPersonagem(
+                            personagem: personagem,
+                            store: store,
+                          );
                         },
                       ),
                     );
