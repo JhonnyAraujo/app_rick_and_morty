@@ -13,10 +13,18 @@ class DetailPage extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            pinned: false,
+            floating: true,
+            collapsedHeight: 60,
+            expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
               background: Hero(
                 tag: ValueKey(personagem.id),
-                child: CachedNetworkImage(imageUrl: personagem.imageUrl),
+                child: CachedNetworkImage(
+                  imageUrl: personagem.imageUrl,
+                  fit: BoxFit.cover,
+                  // fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
