@@ -1,5 +1,6 @@
 import 'package:app_rick_and_morty/models/personagem.model.dart';
 import 'package:app_rick_and_morty/pages/home/store/home.store.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CardListPersonagem extends StatefulWidget {
@@ -17,6 +18,12 @@ class CardListPersonagem extends StatefulWidget {
 }
 
 class _CardListPersonagemState extends State<CardListPersonagem> {
+  @override
+  void initState() {
+    super.initState();
+    getPaletteColor();
+  }
+
   Future<void> getPaletteColor() async {
     final schemeColor = await ColorScheme.fromImageProvider(
       provider: NetworkImage(widget.personagem.imageUrl),
@@ -43,7 +50,13 @@ class _CardListPersonagemState extends State<CardListPersonagem> {
             spacing: 15,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.network(widget.personagem.imageUrl, width: 120),
+              Hero(
+                tag: ValueKey(widget.personagem.id),
+                child: CachedNetworkImage(
+                  imageUrl: widget.personagem.imageUrl,
+                  width: 120,
+                ),
+              ),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

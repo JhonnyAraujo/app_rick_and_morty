@@ -1,4 +1,5 @@
 import 'package:app_rick_and_morty/colors.dart';
+import 'package:app_rick_and_morty/pages/Detail/detail.page.dart';
 import 'package:app_rick_and_morty/pages/home/store/home.store.dart';
 import 'package:app_rick_and_morty/widgets/card_grid_personagem.widget.dart';
 import 'package:app_rick_and_morty/widgets/card_list_personagem.widget.dart';
@@ -134,9 +135,21 @@ class _HomePageState extends State<HomePage> {
                             );
                           }
                           final personagem = listaFiltrada[index];
-                          return CardListPersonagem(
-                            personagem: personagem,
-                            store: store,
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return DetailPage(personagem: personagem);
+                                  },
+                                ),
+                              );
+                            },
+                            child: CardListPersonagem(
+                              personagem: personagem,
+                              store: store,
+                            ),
                           );
                         },
                       ),
