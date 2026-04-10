@@ -70,9 +70,25 @@ class _CardListPersonagemState extends State<CardListPersonagem> {
                         color: Colors.black45,
                       ),
                     ),
-                    Text(
-                      "${widget.personagem.status} - ${widget.personagem.species}",
-                      style: const TextStyle(color: Colors.black45),
+                    Row(
+                      spacing: 4,
+                      children: [
+                        widget.personagem.status == "Alive"
+                            ? const Icon(
+                                Icons.circle,
+                                size: 14,
+                                color: Colors.green,
+                              )
+                            : const Icon(
+                                Icons.circle,
+                                size: 14,
+                                color: Colors.red,
+                              ),
+                        Text(
+                          "${widget.personagem.status} - ${widget.personagem.species}",
+                          style: const TextStyle(color: Colors.black45),
+                        ),
+                      ],
                     ),
                     Text(
                       widget.personagem.gender,
