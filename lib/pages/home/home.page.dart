@@ -115,9 +115,20 @@ class _HomePageState extends State<HomePage> {
                             );
                           }
                           final personagem = listaFiltrada[index];
-                          return CardGridPersonagem(
-                            personagem: personagem,
-                            store: store,
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      DetailPage(personagem: personagem),
+                                ),
+                              );
+                            },
+                            child: CardGridPersonagem(
+                              personagem: personagem,
+                              store: store,
+                            ),
                           );
                         },
                       ),
@@ -140,9 +151,8 @@ class _HomePageState extends State<HomePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) {
-                                    return DetailPage(personagem: personagem);
-                                  },
+                                  builder: (context) =>
+                                      DetailPage(personagem: personagem),
                                 ),
                               );
                             },

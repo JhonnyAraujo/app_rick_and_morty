@@ -1,5 +1,6 @@
 import 'package:app_rick_and_morty/models/personagem.model.dart';
 import 'package:app_rick_and_morty/pages/home/store/home.store.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CardGridPersonagem extends StatefulWidget {
@@ -55,7 +56,13 @@ class _CardGridPersonagemState extends State<CardGridPersonagem> {
                 "${widget.personagem.id}",
                 style: const TextStyle(color: Colors.black45),
               ),
-              Image.network(widget.personagem.imageUrl, width: 135),
+              Hero(
+                tag: ValueKey(widget.personagem.id),
+                child: CachedNetworkImage(
+                  imageUrl: widget.personagem.imageUrl,
+                  width: 135,
+                ),
+              ),
               Text(
                 widget.personagem.name,
                 style: const TextStyle(
