@@ -53,6 +53,7 @@ class _CardListPersonagemState extends State<CardListPersonagem> {
               Hero(
                 tag: ValueKey(widget.personagem.id),
                 child: CachedNetworkImage(
+                  key: const Key("imageListCard"),
                   imageUrl: widget.personagem.imageUrl,
                   width: 120,
                 ),

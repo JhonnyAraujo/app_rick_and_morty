@@ -59,6 +59,7 @@ class _CardGridPersonagemState extends State<CardGridPersonagem> {
               Hero(
                 tag: ValueKey(widget.personagem.id),
                 child: CachedNetworkImage(
+                  key: const Key("imageGridCard"),
                   imageUrl: widget.personagem.imageUrl,
                   width: 135,
                 ),

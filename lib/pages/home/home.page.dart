@@ -25,6 +25,12 @@ class _HomePageState extends State<HomePage> {
     scrollController.addListener(scrollListener);
   }
 
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
   void scrollListener() {
     if (scrollController.offset >= scrollController.position.maxScrollExtent &&
         !scrollController.position.outOfRange) {
@@ -35,7 +41,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
@@ -61,6 +66,7 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(height: 12),
               TextField(
+                key: const Key("Filtro"),
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: primaryColor,
@@ -100,6 +106,7 @@ class _HomePageState extends State<HomePage> {
                   if (store.isGrid) {
                     return Expanded(
                       child: GridView.builder(
+                        key: const Key("gridView"),
                         controller: scrollController,
                         itemCount:
                             listaFiltrada.length + (store.isLoading ? 1 : 0),
@@ -126,6 +133,7 @@ class _HomePageState extends State<HomePage> {
                               );
                             },
                             child: CardGridPersonagem(
+                              key: const Key("gridCard"),
                               personagem: personagem,
                               store: store,
                             ),
@@ -136,6 +144,7 @@ class _HomePageState extends State<HomePage> {
                   } else {
                     return Expanded(
                       child: ListView.builder(
+                        key: const Key("listView"),
                         controller: scrollController,
                         itemCount:
                             listaFiltrada.length + (store.isLoading ? 1 : 0),
@@ -157,6 +166,7 @@ class _HomePageState extends State<HomePage> {
                               );
                             },
                             child: CardListPersonagem(
+                              key: const Key("listCard"),
                               personagem: personagem,
                               store: store,
                             ),

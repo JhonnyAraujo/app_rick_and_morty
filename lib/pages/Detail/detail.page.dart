@@ -11,7 +11,6 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -23,6 +22,7 @@ class DetailPage extends StatelessWidget {
               background: Hero(
                 tag: ValueKey(personagem.id),
                 child: CachedNetworkImage(
+                  key: const Key("imageDetails"),
                   imageUrl: personagem.imageUrl,
                   fit: BoxFit.cover,
                   // fit: BoxFit.cover,
@@ -48,17 +48,26 @@ class DetailPage extends StatelessWidget {
                     spacing: 10,
                     children: [
                       Chip(
-                        label: Text(personagem.status),
+                        label: Text(
+                          personagem.status,
+                          style: const TextStyle(color: Colors.black),
+                        ),
                         backgroundColor: personagem.color,
                         shape: const StadiumBorder(),
                       ),
                       Chip(
-                        label: Text(personagem.species),
+                        label: Text(
+                          personagem.species,
+                          style: const TextStyle(color: Colors.black),
+                        ),
                         backgroundColor: personagem.color,
                         shape: const StadiumBorder(),
                       ),
                       Chip(
-                        label: Text(personagem.gender),
+                        label: Text(
+                          personagem.gender,
+                          style: const TextStyle(color: Colors.black),
+                        ),
                         backgroundColor: personagem.color,
                         shape: const StadiumBorder(),
                       ),
