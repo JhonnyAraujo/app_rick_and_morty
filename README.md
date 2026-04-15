@@ -1,6 +1,6 @@
 # 📱 App Rick and Morty
 
-> App Rick and Morty é uma app mobile desenvolvida para explorar o universo da série, permitindo a visualização detalhada de personagens com uma interface fluida e moderna. O projeto foi concebido para colocar em prática conceitos avançados de consumo de API e arquitetura escalável no Flutter.
+> **Projeto desenvolvido como parte do Desafio Técnico Desenvolvedor Mobile com Flutter do Programa VesteTech (parceria entre Veste S.A. e Growdev).** O aplicativo consiste em explorar o universo da série Rick and Morty, colocando em prática conceitos avançados de consumo de API e arquitetura escalável aplicados ao contexto de desenvolvimento mobile profissional..
 
 [![Flutter Version](https://img.shields.io/badge/Flutter-v3.41.4-blue.svg)](https://flutter.dev/)
 [![Dart Version](https://img.shields.io/badge/Dart-v3.11.1-blue.svg)](https://dart.dev/)
